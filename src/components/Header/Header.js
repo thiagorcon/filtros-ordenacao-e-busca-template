@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./styles";
 
-const Header = () => {
+const Header = ({inputId,setInputId,inputNome,setInputNome}) => {
   const pokemontypesArray = [
     "Normal",
     "Fire",
@@ -23,10 +23,19 @@ const Header = () => {
     "Fairy",
   ];
 
+  function manipularInputId(event) {
+    setInputId(event.target.value);
+  }
+  function manipularInputNome(event) {
+    //console.log(event.target.value);
+    setInputNome(event.target.value);
+  }
   return (
     <Container>
-      <input type="number" placeholder="Buscar por id" />
-      <input type="text" placeholder="Buscar por nome" />
+      <input type="number" value={inputId} onChange={manipularInputId} placeholder="Buscar por id" 
+      //aqui faz com que não deixe ter números negativos
+      min={0}/>
+      <input type="text" placeholder="Buscar por nome" value={inputNome} onChange={manipularInputNome} />
       <select>
         <option value="">Ordenar</option>
         <option value="">Crescente</option>
